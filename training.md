@@ -78,81 +78,81 @@ Now that we have designed the first dialogue between the chatbot and the user, w
 
 2.  **Select the Watson Conversation** tile under the section titled Watson.
 
-    ![IBM Cloud catalog](images/catalog.png)
+    ![IBM Cloud catalog](assets/catalog.png)
 
 3.  Enter `my-conversation-service` in the field labeled Service name. Click on **Create**.
 
-    ![Enter Service Name](images/servicename.png)
+    ![Enter Service Name](assets/servicename.png)
 
 4.  Click on the green **Launch tool** button to launch into the Watson Conversation tooling.
 
-    ![Launch Tool](images/launchtool.png)
+    ![Launch Tool](assets/launchtool.png)
 
 5.  This is the Watson Conversation tooling where you can create workspaces and setup different chatbots dialogues and applications. There is an example Cognitive Car Dashboard workspace where you can see a more evolved training. However, we'll create a new workspace for our bot to use. Click on the **Create** button in the box labeled **Create a new workspace**.
 
-    ![Workspaces](images/workspaces.png)
+    ![Workspaces](assets/workspaces.png)
 
 6.  Enter a name for the chatbot and a description. Click **Create** when finished.
 
-    ![Create workspace](images/createworkspace.png)
+    ![Create workspace](assets/createworkspace.png)
 
 7.  You will be redirected into a page with three tabs, Intents, Entities, and Dialog. Under the Intents tab, click on **Create new** to create the first intent.
 
 8.  Use the answers you wrote in Step 1 to create the first intent. Click on **Done** when finished.
 
-    ![Create intent](images/intents.png)
+    ![Create intent](assets/intents.png)
 
 9.  **Click on the Entities** tab in the top menu bar. This is where you can add entities. Add the entity you wrote in Step 1. Click **Done** when finished.     
 
-    ![Create entity](images/entities.png)
+    ![Create entity](assets/entities.png)
 
 10. The Watson Conversation has a handful of common entities created by IBM that can be used across any use case. These entities include: date, time, currency, percentage, and numbers. **Click on System entities**. Toggle on the switch for `@sys-time`, `@sys-date`, and `@sys-number` to enable the entities.
 
-    ![Enable System Entities](images/systementities.png)
+    ![Enable System Entities](assets/systementities.png)
 
 11. **Click on the Dialog tab** in the top menu bar. Click **Create**. There are two nodes added by default. The `welcome` condition is triggered when the chatbot is initially started. This is a good place to introduce the bot and suggest actions the user can ask of this chatbot.    
 
-    ![Create dialog](images/dialog.png)
+    ![Create dialog](assets/dialog.png)
 
 12. The second node checks for the condition `anything_else`. In the event the user enters something that wasn't expected, the service will return this response. Ideally, it should convey a way for the user to recover, such as example phrases.    
 
-    ![Create anything_else node](images/anything_else.png)
+    ![Create anything_else node](assets/anything_else.png)
 
 13. Return back to the `welcome` node and click on the three dots on the right side of the node. Select **Add node below** from the menu.    
 
-    ![Add node below](images/addnode.png)
+    ![Add node below](assets/addnode.png)
 
 14. Add a node to test the condition of the first intent, `#book_reservation`, as shown below.     
 
-    ![Book Reservation](images/bookreservation.png)
+    ![Book Reservation](assets/bookreservation.png)
 
 15. **Click on Customize** in the top right corner. Enable Slots and Prompt for everything.
 
-    ![Enable Slots](images/enableslots.png)
+    ![Enable Slots](assets/enableslots.png)
 
 16. Add a slot for `@cuisine`, with the prompt `What type of cuisine would you like?`    
 
-    ![Add cuisine slot](images/addslots1.png)
+    ![Add cuisine slot](assets/addslots1.png)
 
 17. Add another slot for `@sys-date`, with the prompt `What day would you like to reserve?`    
 
-    ![Add date slot](images/addslots2.png)
+    ![Add date slot](assets/addslots2.png)
 
 18. Add another slot for `@sys-time`, with the prompt `What time would you like to reserve?`    
 
-    ![Add date slot](images/addslots3.png)
+    ![Add date slot](assets/addslots3.png)
 
 19. Add another slot for `@sys-number`, with the prompt `How many people will be coming?`    
 
-    ![Add size slot](images/addslots4.png)
+    ![Add size slot](assets/addslots4.png)
 
 20. If no slots are prefilled, prompt the user to provide a cuisine.    
 
-    ![Add initial slot](images/addslots5.png)
+    ![Add initial slot](assets/addslots5.png)
 
 21. Have the bot respond with the details of the reservation. The <? … ?> syntax uses the values stored in the context and injects the values into the response.
 
-    ![Respond with confirmation](images/respond.png)
+    ![Respond with confirmation](assets/respond.png)
 
 # Step 3: Test Watson Conversation Service
 
@@ -160,27 +160,27 @@ The Watson Conversation tooling offers a testing panel to test phrases to confir
 
 1.  To test the bot, **click on the Ask Watson icon** in the top-right corner of the tooling.    
 
-    ![Ask Watson](images/askwatson.png)
+    ![Ask Watson](assets/askwatson.png)
 
 2.  A side panel appears and shows the contents of the node that matches welcome. Enter a message that triggers the `#book_reservation` intent. We can ask `book a table`    
 
-    ![Book Reseration](images/test-intro.png)
+    ![Book Reseration](assets/test-intro.png)
 
 3.  Notice that the intent `#book_reservation` was recognized. The `#book_reservation` node was triggered and the output includes the response from the Book Reservation node. The user is prompted for a choice of cuisine.     
 
-    ![Book Reseration](images/test-bookreservation.png)
+    ![Book Reseration](assets/test-bookreservation.png)
 
 4.  When the user enters a cuisine, the `@cuisine` entity is recognized.     
 
-    ![Enter type of cuisine](images/test-cuisine.png)
+    ![Enter type of cuisine](assets/test-cuisine.png)
 
 5.  When the user enters a date or time, Watson extracts out the value using the system entities `@sys-date` and `@sys-time`.     
 
-    ![Enter date and time](images/test-date.png)
+    ![Enter date and time](assets/test-date.png)
 
 6.  Finally, when the user enters a number (either numerically or spelled out) for the number of people in the reservation, Watson extracts out the number using the system entity `@sys-number`.    
 
-    ![Enter number in party](images/test-size.png)   
+    ![Enter number in party](assets/test-size.png)   
 
 ## Summary
 
