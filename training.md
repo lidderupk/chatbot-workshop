@@ -3,7 +3,7 @@
 The Watson Assistant service combines machine learning, natural language understanding, and integrated dialog tools to create conversation flows between your apps and your users. In this lab, you will create a workspace and understand the terminology of creating a chatbot.
 
 # Step 0: Sign up on IBM Cloud
-Sign up on [bluemix.net](http://ibm.biz/slackchatbot070918).
+Sign up on [IBM Cloud](http://ibm.biz/slackchatbot070918).
 # Step 1: Designing Your Bot
 
 Building a chatbot with Watson Assistant is so easy, some developers choose to dive right into the tooling. However, with a well-thought out, well-planned chatbot, the interaction with the user can lead to a much better experience that can handle edge cases. In this section, we will design the interaction between a user, Dave, and a chatbot named HungerBot.
@@ -74,7 +74,7 @@ In the Dialog editor of Watson Assistant, we can now setup logic to step the use
 
 # Step 2: Train Watson Assistant Service
 
-Now that we have designed the first dialogue between the chatbot and the user, we can train the Watson Assistant service. Sign up for an IBM Cloud account at [bluemix.net](https://bluemix.net). If you already have an account, sign into your account.
+Now that we have designed the first dialogue between the chatbot and the user, we can train the Watson Assistant service. Sign up for an IBM Cloud account at [IBM Cloud](http://ibm.biz/slackchatbot070918). If you already have an account, sign into your account.
 
 1. Click on the **Catalog** link in the top-right corner of the IBM Cloud dashboard.
 
@@ -244,6 +244,8 @@ Now that we have designed the first dialogue between the chatbot and the user, w
 
 # Step 3: Test Watson Assistant Service
 
+## Basic Dialog and Slots
+
 The Watson Assistant tool offers a testing panel to test phrases to confirm the correct intents, entities, and dialog are matched and returned.
 
 1. To test the bot, click on the **Try It** button in the top-right corner of the tool.    
@@ -272,11 +274,44 @@ The Watson Assistant tool offers a testing panel to test phrases to confirm the 
 
     ![Enter number in party](assets/test-size.png)   
 
-## Summary
+## Digression
+
+0. Click the clear button to clear the screen and clean up the context variables.
+
+1. Enter `Book a reservation`. The bot again identifies the correct intent and starts by trying to fill out the first `cuisine` slot.
+
+    ![Enter number in party](assets/test-digress-1.jpg)   
+
+2. Enter `What are my options ?`. The bot identifies this as a digression to the cuisine node based on the #faq_cuisine_type intent. It then asks for the cuisine information again.
+
+    ![Enter number in party](assets/test-digress-2.jpg)   
+
+3. Enter `I would like to have Mexican at 5pm tomorrow. Please book a table for 4`. The bot finishes the task at this point.
+
+    ![Enter number in party](assets/test-digress-3.jpg)   
+
+## Handler
+0. Click the clear button to clear the screen and clean up the context variables.
+
+1. Enter `Book a reservation`. The bot again identifies the correct intent and starts by trying to fill out the first `cuisine` slot.
+
+    ![Enter number in party](assets/test-digress-1.jpg)
+
+2. Type `Nevermind, I am not hungry anymore`. The bot recognizes the `Cancel` handler on the `#book_reservation` intent and cancels the whole request. 
+
+    ![Enter number in party](assets/test-handler-1.jpg)
+
+3. It clears out the context variables as well.
+
+    ![Enter number in party](assets/test-handler-2.jpg)
+
+# Step 4: Deploy to Slack as per instructions [here](https://github.com/lidderupk/chatbot-workshop#deploy-to-slack)
+
+# Summary
 
 The Watson Assistant service was able to handle gathering multiple pieces of information, parsing the user input, and placing the values into a context that was used to inject into the response back to the user.
 
-## License
+# License
 
 © Copyright IBM Corporation 2018
 
