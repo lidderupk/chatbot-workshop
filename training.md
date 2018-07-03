@@ -2,6 +2,8 @@
 
 The Watson Assistant service combines machine learning, natural language understanding, and integrated dialog tools to create conversation flows between your apps and your users. In this lab, you will create a workspace and understand the terminology of creating a chatbot.
 
+# Step 0: Sign up on IBM Cloud
+Sign up on [bluemix.net](http://ibm.biz/slackchatbot070918).
 # Step 1: Designing Your Bot
 
 Building a chatbot with Watson Assistant is so easy, some developers choose to dive right into the tooling. However, with a well-thought out, well-planned chatbot, the interaction with the user can lead to a much better experience that can handle edge cases. In this section, we will design the interaction between a user, Dave, and a chatbot named HungerBot.
@@ -128,6 +130,8 @@ Now that we have designed the first dialogue between the chatbot and the user, w
 
     ![Add node below](assets/addnode.png)
 
+## Slots
+
 15. Add a node to test the condition of the first intent you created, `#book_reservation`, as shown below. Click on **Customize** in the top right corner. 
 
     ![Book Reservation](assets/bookreservation.png)
@@ -175,6 +179,7 @@ Now that we have designed the first dialogue between the chatbot and the user, w
     The <? … ?> syntax uses the values stored in the context and injects the values into the response.
 
     ![Respond with confirmation](assets/respond.png)
+## Handlers
 
 23. Add a way out for the end user. Add a #Cancel intent.
 
@@ -201,18 +206,41 @@ Now that we have designed the first dialogue between the chatbot and the user, w
 
     ![Respond  with confirmation](assets/cancel-handler-response-detail.jpg)
 
-28. Here is a screeshot that tests the above steps:
-
+28. Here is a screenshot that tests the above steps:
 
     ![Respond  with confirmation](assets/cancel-handler.gif)
 
+## Digressions
 
-    <br/>
-    <br/>
+29. Let's add a way for the user to ask FAQs while making a request or otherwise. We will first have to recognize what the user is asking for. Add an intent called `faq_cuisine_type` and give it the following examples:
 
-    <video width="99%" height="540" autoplay loop muted>
-        <source src="/assets/cancel-handler.mov">
-    </video>
+    ![Respond  with confirmation](assets/cuisine-intent.jpg)
+
+30. Next, add another intent called `faq_hours` and give it the following examples:
+    
+    ![Respond  with confirmation](assets/faq-intent.jpg)
+
+30. Add a folder called `FAQ` and two nodes under it called `FAQ cuisine` to answer questions about what type of cuisine we server and `FAQ Hours` to answer any questions about what times we are open.
+
+    ![Respond  with confirmation](assets/FAQ-folder-nodes.jpg)
+
+30. For the FAQ cuisine node, add `#faq_cuisine_type` to bot recognizes and add the following to respond with
+
+    ![Respond  with confirmation](assets/FAQ-cuisine-details.jpg)
+
+31. For the FAQ hours node, add `#faq_hours` to bot recognizes and add the following to respond with
+
+    ![Respond  with confirmation](assets/FAQ-hours-details.jpg)
+
+30. Back in the FAQ folder, allow digressions to come in and return in the `customize` settings
+
+    ![Respond  with confirmation](assets/FAQ-digressions.jpg)
+
+31. Here is the output of the Digressions section:
+
+    ![Respond  with confirmation](assets/faq-digressions.gif)
+
+
 
 # Step 3: Test Watson Assistant Service
 
