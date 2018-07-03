@@ -176,6 +176,44 @@ Now that we have designed the first dialogue between the chatbot and the user, w
 
     ![Respond with confirmation](assets/respond.png)
 
+23. Add a way out for the end user. Add a #Cancel intent.
+
+    ![Respond  with confirmation](assets/cancel-intent.jpg)
+
+24. Go back to "book a reservation" node and open it. Click on "Manage Handlers"
+
+25. Add the following handler for the #Cancel intent.
+
+    `Okay, cancelling your request.`
+
+    ![Respond  with confirmation](assets/cancel-handler-1.jpg)
+
+    Click on the gear icon to open the detail pane. Since the user is cancelling their reservation, we need to clear out the context variables for this conversation. Additionally, we ware setting the `$user_cancelled` variable for the next node to show the appropriate response. 
+
+    ![Respond  with confirmation](assets/cancel-handler-2.jpg)
+
+
+26. Back in the main node, change the response to the following:
+
+    ![Respond  with confirmation](assets/cancel-handler-response.jpg)
+
+27. Jump to the welcome node in the detail of this response. This is so that we can start over again! Additionally, you must also set the `user_cancelled` variable back to `false`, so that the user is not kicked out unnecessarily in the next cycle.
+
+    ![Respond  with confirmation](assets/cancel-handler-response-detail.jpg)
+
+28. Here is a screeshot that tests the above steps:
+
+
+    ![Respond  with confirmation](assets/cancel-handler.gif)
+
+
+    <br/>
+    <br/>
+
+    <video width="99%" height="540" autoplay loop muted>
+        <source src="/assets/cancel-handler.mov">
+    </video>
+
 # Step 3: Test Watson Assistant Service
 
 The Watson Assistant tool offers a testing panel to test phrases to confirm the correct intents, entities, and dialog are matched and returned.
