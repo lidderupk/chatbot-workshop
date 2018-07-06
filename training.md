@@ -252,7 +252,7 @@ We can use handlers to give an exit route to the user.
 
     ![Respond  with confirmation](assets/faq-hours-intent.jpg)
 
-Now let's add a dialog for FAQ. Click on the back arrow to go back to the `Build` page.
+Now let's add a dialog for FAQ. Click on the back arrow to go back to the `Build` page. Click on `Dialog` tab.
 
 36. Click on the three dots on the `Book reservation` node and select `Add a folder`. Name this folder `FAQ`
 
