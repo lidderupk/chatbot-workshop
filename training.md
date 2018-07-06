@@ -215,19 +215,29 @@ We can use handlers to give an exit route to the user.
 
     ![Respond  with confirmation](assets/handler-add-user-cancelled.jpg)
 
-32. Click on the gear in the `$user_cancelled` response. We want to stop processing the rest of the response and simply go back to the welcome node. This way the user can start again. Select `Jump to ...` in the `finally` case and select `Welcome` node to jump to. You are presented with multiple options to follow after the jump. Select `Wait for user input`.
+32. Click on the gear in the `$user_cancelled` response.  We will reset the `$user_cancelled` variable to false to clear the response for the next iteration. Click on the three dots and select `Open context editor`. 
+    
+    ![Respond  with confirmation](assets/user-cancelled-reset.jpg)
+
+    Set the `user_cancelled` context variable to false.
+
+    ![Respond  with confirmation](assets/user-cancelled-final.jpg)
+
+33. We want to stop processing the rest of the response and simply go back to the welcome node. This way the user can start again. On the same screen, select `Jump to ...` in the `finally` case and select `Welcome` node to jump to. You are presented with multiple options to follow after the jump. Select `Wait for user input`.
 
     ![Respond  with confirmation](assets/user-cancelled-go-welcome-node-2.jpg)
     ![Respond  with confirmation](assets/user-cancelled-go-welcome-node-1.jpg)
+
+    Click `Save` to go back to the `Book Reservation` node.
     
-33. Additionally, set the $user_cancelled variable to false here. Click `Save` to go back to `Book Reservation` node. For the second response, add the condition of `true`. This is the catch all and will only be reached if they have not cancelled.
+34. For the second response, add the condition of `true`. This is the catch all and will only be reached if they have not cancelled.
     ![Respond  with confirmation](assets/handler-final.jpg)
 
 **Try it**
 
 ### Digressions
 
-34. Go back to the `Build` page. Let's add a way for the user to ask common questions like `What are your hours of operation ?` and `What kind of cuisines do you offer ?`. We will first have to recognize what the user is asking for. Add an intent called `faq_cuisine_type` and give it the following examples:
+35. Go back to the `Build` page. Let's add a way for the user to ask common questions like `What are your hours of operation ?` and `What kind of cuisines do you offer ?`. We will first have to recognize what the user is asking for. Add an intent called `faq_cuisine_type` and give it the following examples:
 
     ```
     Show me all cuisines
@@ -239,7 +249,7 @@ We can use handlers to give an exit route to the user.
 
     ![Respond  with confirmation](assets/cuisine-intent-2.jpg)
 
-35. Click on the back arrow to go back to the `Build` page. Add another intent for `faq_hours` with the following examples:
+36. Click on the back arrow to go back to the `Build` page. Add another intent for `faq_hours` with the following examples:
 
     ```
     Are you open on the weekend ?
@@ -255,20 +265,20 @@ We can use handlers to give an exit route to the user.
 
 Now let's add a dialog for FAQ. Click on the back arrow to go back to the `Build` page. Click on `Dialog` tab.
 
-36. Click on the three dots on the `Book reservation` node and select `Add a folder`. Name this folder `FAQ`
+37. Click on the three dots on the `Book reservation` node and select `Add a folder`. Name this folder `FAQ`
 
     ![Respond  with confirmation](assets/digress-add-faq.jpg)
 
     ![Respond  with confirmation](assets/digress-name-faq.jpg)
 
-37. Click on `Customize` button and enable `Allow digressions into this folder` and also `Return after digression`. Click `Apply` to save your changes.
+38. Click on `Customize` button and enable `Allow digressions into this folder` and also `Return after digression`. Click `Apply` to save your changes.
 
     ![Respond  with confirmation](assets/digress-customize-faq.jpg)
 
-38. Click on cross to go back to the `Build` page. Click on the three dots in the `FAQ` folder and select `Add node to folder`. 
+39. Click on cross to go back to the `Build` page. Click on the three dots in the `FAQ` folder and select `Add node to folder`. 
     ![Respond  with confirmation](assets/diregress-add-node.jpg)
 
-39. Name this node `FAQ Cuisine` and add the `#faq_cuisine_type` intent you just created in the `If bot recognizes`. If the user is asking about cuisine, add the following responses:
+40. Name this node `FAQ Cuisine` and add the `#faq_cuisine_type` intent you just created in the `If bot recognizes`. If the user is asking about cuisine, add the following responses:
     ```
     We offer delicious Mexican, Chinese, Italian, Mediterranean,  and American cuisines.
     Join us for Mexican, Italian, Mediterranean, American or Chinese.
@@ -277,11 +287,11 @@ Now let's add a dialog for FAQ. Click on the back arrow to go back to the `Build
 
     ![Respond  with confirmation](assets/digress-faq-cuisine-node.jpg)
     
-40. Click on the cross button to go back to the `Build` page. Click on the three dots in the `FAQ` folder and select `Add node to folder`. 
+41. Click on the cross button to go back to the `Build` page. Click on the three dots in the `FAQ` folder and select `Add node to folder`. 
 
     ![Respond  with confirmation](assets/faq-add-hours-folder.jpg)
 
-41. Name this node `FAQ Hours` and add the `#faq_hours` intent in the `If bot recognizes`. If the is asking for hours or when the restaurant is open, respond with the following:
+42. Name this node `FAQ Hours` and add the `#faq_hours` intent in the `If bot recognizes`. If the is asking for hours or when the restaurant is open, respond with the following:
 
     ```
     We are open from 9am to 9pm daily.
@@ -289,7 +299,7 @@ Now let's add a dialog for FAQ. Click on the back arrow to go back to the `Build
 
     ![Respond  with confirmation](assets/digress-faq-hours-node.jpg)
 
-42. Click cross to go back to the `Build` page. Open the `Book reservation` node and click on `Customize`. Go to the `Digressions` tab and enable `Allow digressions away while slot filling`. Also enable `Only digress from slots to nodes that allow returns`. Click `Apply` to save your changes. Click cross to go back to the `Build` page.
+43. Click cross to go back to the `Build` page. Open the `Book reservation` node and click on `Customize`. Go to the `Digressions` tab and enable `Allow digressions away while slot filling`. Also enable `Only digress from slots to nodes that allow returns`. Click `Apply` to save your changes. Click cross to go back to the `Build` page.
 
     ![Respond  with confirmation](assets/digress-customize-book-reservation.jpg)
 
