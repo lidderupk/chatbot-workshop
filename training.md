@@ -197,11 +197,11 @@ We can use handlers to give an exit route to the user.
 
     ![Respond  with confirmation](assets/cancel-handler-2-a.jpg)
 
-27. Additionally, add another context variable `user_cancelled` and set it to `true`. We will use this in the next step to respond accordingly for the whole node. Finally, set `And finally` to `skip to response`. The user has decided to abandon the intent, so we don't want to ask any more questions and just skip to the response.
+27. Additionally, add another context variable `user_cancelled` and set it to `true`. We will use this in the next step to respond accordingly for the whole node. 
 
     ![Respond  with confirmation](assets/cancel-handler-2-b.jpg)
 
-28. Lastly, if the user wants to quit, we don't want to keep prompting for the slots. Set the `and finally` block to `skip to response`.
+28. Lastly, if the user wants to quit, we don't want to keep prompting for the slots. Set the `and finally` block to `skip to response`. The user has decided to abandon the intent, so we don't want to ask any more questions and just skip to the response.
 
     ![Respond  with confirmation](assets/handler-skip-to-response.jpg)
 
