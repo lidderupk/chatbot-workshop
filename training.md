@@ -185,9 +185,8 @@ We can use handlers to give an exit route to the user.
 
     ![Respond  with confirmation](assets/cancel-handler-1.jpg)
 
-    Click on the gear icon to open the detail pane. Since the user is cancelling their reservation, we need to clear out the context variables for this conversation. Additionally, we are setting the `$user_cancelled` variable for the next node to show the appropriate response.
 
-26. On the detail page, click on the three dots and then `Open context editor`. Set each one of our context variables (defined earlier as slots) to null.
+26. Click on the gear icon to open the detail pane. Since the user is cancelling their reservation, we need to clear out the context variables for this conversation.On the detail page, click on the three dots and then `Open context editor`. Set each one of our context variables (defined earlier as slots) to null.
 
     ```
         cuisine
