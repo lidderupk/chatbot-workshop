@@ -63,7 +63,7 @@ Sign up on [IBM Cloud](http://ibm.biz/slackchatbot070918). If you already have a
 
     ![Add New Intent](assets/addnew.png)
 
-9.  Name the intent `book_reservation` and use the answers you wrote in Step 1 to create the first intent. If you did not go through that exercise, enter the following examples for the intent:
+9.  Name the intent `book_reservation` and enter the following user examples for the intent:
 
     ```
     book a reservation
@@ -76,7 +76,7 @@ Sign up on [IBM Cloud](http://ibm.biz/slackchatbot070918). If you already have a
 
     ![Create intent](assets/intents.png)
 
-10. Click the back arrow to go back to the **Build** page. Click on the **Entities** tab in the top menu bar. This is where you can add entities. Add the entity you wrote in Step 1. If you are not following that exercise, add the `cuisine` entity with the following values
+10. Click the back arrow to go back to the **Build** page. Click on the **Entities** tab in the top menu bar. This is where you can add entities. Create a new entity called `cuisine` and enter the following values
 
     ```
     american
@@ -202,11 +202,17 @@ We can use handlers to give an exit route to the user.
 
 28. Click `back` to save the state and go back to the handler page. Click `save` to exit this back go back to the `Book Reservation` node. 
 
-29. Back in the main node, click on the `Customize` button on top right to open the detail pane. Enable `Multiple responses` so that we can check for the `user_cancelled` condition and response accordingly. Click on `Apply` to close the pane.
+29. Back in the `Book Reservation` node, click on the `Customize` button on top right to open the detail pane. Enable `Multiple responses` so that we can check for the `user_cancelled` condition and response accordingly. Click on `Apply` to close the pane.
+
+    ![Respond  with confirmation](assets/handler-enable-multiple-responses.jpg)
 
 30. Add a new response and then move it up before the existing response by using the up arrow. **The order is important here** as the flow will stop on the first condition that returns true. Use `$user_cancelled` in the first conditional response with the response of `Sorry to see you go. You are always welcome to start again.`
 
+    ![Respond  with confirmation](assets/handler-add-user-cancelled.jpg)
+
 31. Click on the gear to go into the respond. We want to stop processing the rest of the response and simply go back to the welcome node. This way the user can start again. Select `Jump to ...` in the `finally` case and select `Welcome` node to jump to. You are presented with multiple options to follow after the jump. Select `Wait for user input`.
+
+
 
 32. Additionally, set the $user_cancelled variable to false here. Click `Save` to go back to `Book Reservation` node. For the second response, add the condition of `true`. This is the catch all and will only be reached if they have not cancelled.
 
