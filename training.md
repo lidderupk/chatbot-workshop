@@ -108,11 +108,11 @@ Sign up on [IBM Cloud](http://ibm.biz/slackchatbot070918). If you already have a
 
 ### Slots
 
-15. Name this node `Book Reservation`. Add a node to test the condition of the first intent you created, `#book_reservation`, as shown below. Click on **Customize** in the top right corner.
+15. Name this node `Book Reservation`. Add a node to test the condition of the first intent you created, `#book_reservation`, as shown below.
 
     ![Book Reservation](assets/bookreservation.png)
 
-16. Toggle the slider labeled **Slots** and tick the box labeled **Prompt for everything**. Click **Apply**. Slots will help to gather multiple pieces of information needed in order to book a reservation.
+16. Click on **Customize** in the top right corner. Toggle the slider labeled **Slots** and tick the box labeled **Prompt for everything**. Click **Apply**. Slots will help to gather multiple pieces of information needed in order to book a reservation.
 
     ![Enable Slots](assets/enableslots.png)
 
