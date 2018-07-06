@@ -255,7 +255,7 @@ We can use handlers to give an exit route to the user.
     Are you open on the weekend ?
     Do you work on the weekends ?
     How late are you open ?
-    What are you hours ?
+    What are your hours ?
     What days are you open ?
     What time do you open ?
     What time do you close ?
