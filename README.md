@@ -3,7 +3,10 @@
 The following resources will help to train and deploy your chatbot to Slack.
 
 # Presentation
-[Design Chatbot with Watson Assistant and Deploy to Slack](#)
+[Design Chatbot with Watson Assistant and Deploy to Slack](assets/ibm-watson-assistant-slack.pdf)
+
+# IBM Cloud Sign up
+[IBM Cloud](#)
 
 # Step 1: Designing Your Bot
 

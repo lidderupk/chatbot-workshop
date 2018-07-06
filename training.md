@@ -51,7 +51,7 @@ Sign up on [IBM Cloud](http://ibm.biz/slackchatbot070918). If you already have a
 
     ![Watson Assistant Start Page](assets/startpage.png)
 
-6.  There is an example Cognitive Car Dashboard workspace where you can see a more evolved training. However, we'll create a new workspace for our bot to use. Click on the **Create** button in the box labeled **Create a new workspace**.
+6.  There is an example Customer Service workspace where you can see a more evolved training. However, we'll create a new workspace for our bot to use. Click on the **Create** button in the box labeled **Create a new workspace**.
 
     ![Workspaces](assets/workspaces.png)
 
@@ -63,25 +63,44 @@ Sign up on [IBM Cloud](http://ibm.biz/slackchatbot070918). If you already have a
 
     ![Add New Intent](assets/addnew.png)
 
-9.  Use the answers you wrote in Step 1 to create the first intent.
+9.  Use the answers you wrote in Step 1 to create the first intent. If you did not go through that exercise, enter the following examples for the intent:
+
+    ```
+    book a reservation
+    book a table
+    make a reservation
+    reserve a table
+    schedule a reservation
+    secure a reservation
+    ```
 
     ![Create intent](assets/intents.png)
 
-10. Click on the **Entities** tab in the top menu bar. This is where you can add entities. Add the entity you wrote in Step 1.
+10. Click the back arrow to go back to the **Build** page. Click on the **Entities** tab in the top menu bar. This is where you can add entities. Add the entity you wrote in Step 1. If you are not following that exercise, add the `cuisine` entity with the following values
+
+    ```
+    american
+    chinese
+    italian
+    mediterranean
+    mexican
+    ```
 
     ![Create entity](assets/entities.png)
 
-11. The Watson Assistant service has a handful of common entities created by IBM that can be used across any use case. These entities include: date, time, currency, percentage, and numbers. Click on **System entities**. Toggle on the switch for `@sys-time`, `@sys-date`, and `@sys-number` to enable the entities.
+11. The Watson Assistant service has a handful of common entities created by IBM that can be used across any use case. These entities include: date, time, currency, percentage, and numbers. Click on **System entities** sub tab. Toggle on the switch for `@sys-time`, `@sys-date`, and `@sys-number` to enable the entities.
 
     ![Enable System Entities](assets/systementities.png)
 
-12. Click on the **Dialog** tab in the top menu bar. Click **Create**. There are two nodes added by default. The `welcome` condition is triggered when the chatbot is initially started. This is a good place to introduce the bot and suggest actions the user can ask of this chatbot.
+12. Click on the **Dialog** tab in the top menu bar. Click **Create**. There are two nodes added by default. The `welcome` condition is triggered when the chatbot is initially started. This is a good place to introduce the bot and suggest actions the user can ask of this chatbot. Enter `Hi, I'm HungerBot. You can ask to reserve a table.`
 
     ![Create dialog](assets/dialog.png)
 
 13. The second node checks for the condition `anything_else`. In the event the user enters something that wasn't expected, the service will return this response. Ideally, it should convey a way for the user to recover, such as example phrases.
 
     ![Create anything_else node](assets/anything_else.png)
+
+    **Try it**
 
 14. Return back to the `welcome` node and click on the three dots on the right side of the node. Select **Add node below** from the menu.
 
@@ -121,7 +140,7 @@ Sign up on [IBM Cloud](http://ibm.biz/slackchatbot070918). If you already have a
 
     ![Add size slot](assets/addslots4.png)
 
-21. If no slots are prefilled, prompt the user to provide a cuisine:
+21. If no slots are pre-filled, prompt the user to provide a cuisine:
 
     `Sure, I can help make a reservation. What type of cuisine did you want?`
 
@@ -137,65 +156,130 @@ Sign up on [IBM Cloud](http://ibm.biz/slackchatbot070918). If you already have a
 
     ![Respond with confirmation](assets/respond.png)
 
+    **Try it**
 ### Handlers
 
-23. Add a way out for the end user. Add a #Cancel intent.
+We can use handlers to give an exit route to the user.
+
+23. Go back to the **Build** page by clicking on the cross on top of the page. Add a #Cancel intent.
+
+    Use the following as user examples
+    ```
+    cancel that
+    cancel the request
+    forget it man !
+    I changed my mind
+    I don't want a table anymore
+    I have other plans.
+    nevermind
+    never mind
+    ```
 
     ![Respond  with confirmation](assets/cancel-intent.jpg)
 
-24. Go back to "book a reservation" node and open it. Click on "Manage Handlers"
+24. Use the **back button** to go back to the **dialog** page. Open the "book a reservation" node and click on "Manage Handlers"
 
-25. Add the following handler for the #Cancel intent.
+25. Enter #Cancel in the `If bot recognizes` to indicate this handler should be invoked when the user wants to cancel the reservation in the middle of booking it.
 
     `Okay, cancelling your request.`
 
     ![Respond  with confirmation](assets/cancel-handler-1.jpg)
 
-    Click on the gear icon to open the detail pane. Since the user is cancelling their reservation, we need to clear out the context variables for this conversation. Additionally, we ware setting the `$user_cancelled` variable for the next node to show the appropriate response.
+    Click on the gear icon to open the detail pane. Since the user is cancelling their reservation, we need to clear out the context variables for this conversation. Additionally, we are setting the `$user_cancelled` variable for the next node to show the appropriate response.
+
+26. On the detail page, click on the three dots and then `Open context editor`. Set each one of our context variables (defined earlier as slots) to null.
+
+    ```
+        cuisine
+        date
+        time
+        number
+    ```
+27. Additionally, add another context variable `user_cancelled` and set it to `true`. We will use this in the next step to respond accordingly for the whole node. Finally, set `And finally` to `skip to response`. The user has decided to abandon the intent, so we don't want to ask any more questions and just skip to the response.
 
     ![Respond  with confirmation](assets/cancel-handler-2.jpg)
 
-26) Back in the main node, change the response to the following:
+28. Click `back` to save the state and go back to the handler page. Click `save` to exit this back go back to the `Book Reservation` node. 
 
-    ![Respond  with confirmation](assets/cancel-handler-response.jpg)
+29. Back in the main node, click on the `Customize` button on top right to open the detail pane. Enable `Multiple responses` so that we can check for the `user_cancelled` condition and response accordingly. Click on `Apply` to close the pane.
 
-27) Jump to the welcome node in the detail of this response. This is so that we can start over again! Additionally, you must also set the `user_cancelled` variable back to `false`, so that the user is not kicked out unnecessarily in the next cycle.
+30. Add a new response and then move it up before the existing response by using the up arrow. **The order is important here** as the flow will stop on the first condition that returns true. Use `$user_cancelled` in the first conditional response with the response of `Sorry to see you go. You are always welcome to start again.`
 
-    ![Respond  with confirmation](assets/cancel-handler-response-detail.jpg)
+31. Click on the gear to go into the respond. We want to stop processing the rest of the response and simply go back to the welcome node. This way the user can start again. Select `Jump to ...` in the `finally` case and select `Welcome` node to jump to. You are presented with multiple options to follow after the jump. Select `Wait for user input`.
 
-28) Here is a screenshot that tests the above steps:
+32. Additionally, set the $user_cancelled variable to false here. Click `Save` to go back to `Book Reservation` node. For the second response, add the condition of `true`. This is the catch all and will only be reached if they have not cancelled.
 
-    ![Respond  with confirmation](assets/cancel-handler.gif)
+**Try it**
 
 ### Digressions
 
-29. Let's add a way for the user to ask FAQs while making a request or otherwise. We will first have to recognize what the user is asking for. Add an intent called `faq_cuisine_type` and give it the following examples:
+33. Go back to the `Build` page. Let's add a way for the user to ask common questions like `What are your hours of operation ?` and `What kind of cuisines do you offer ?`. We will first have to recognize what the user is asking for. Add an intent called `faq_cuisine_type` and give it the following examples:
 
-    ![Respond  with confirmation](assets/cuisine-intent.jpg)
+    ```
+    Show me all cuisines
+    What are my cuisine options ?
+    What can I eat here ?
+    What kind of cuisines do you offer ?
+    What's on the menu ?
+    ```
 
-30. Next, add another intent called `faq_hours` and give it the following examples:
+    ![Respond  with confirmation](assets/cuisine-intent-2.jpg)
 
-    ![Respond  with confirmation](assets/faq-intent.jpg)
+34. Click on the back arrow to go back to the `Build` page. Add another intent for `faq_hours` with the following examples:
 
-31. Add a folder called `FAQ` and two nodes under it called `FAQ cuisine` to answer questions about what type of cuisine we server and `FAQ Hours` to answer any questions about what times we are open.
+    ```
+    Are you open on the weekend ?
+    Do you work on the weekends ?
+    How late are you open ?
+    What are you hours ?
+    What days are you open ?
+    What time do you open ?
+    What time do you close ?
+    ```
 
-    ![Respond  with confirmation](assets/FAQ-folder-nodes.jpg)
+    ![Respond  with confirmation](assets/faq-hours-intent.jpg)
 
-32. For the FAQ cuisine node, add `#faq_cuisine_type` to bot recognizes and add the following to respond with
+Now let's add a dialog for FAQ. Click on the back arrow to go back to the `Build` page.
 
-    ![Respond  with confirmation](assets/FAQ-cuisine-details.jpg)
+35. Click on the three dots on the `Book reservation` node and select `Add a folder`. Name this folder `FAQ`
 
-33. For the FAQ hours node, add `#faq_hours` to bot recognizes and add the following to respond with
+    ![Respond  with confirmation](assets/digress-add-faq.jpg)
 
-    ![Respond  with confirmation](assets/FAQ-hours-details.jpg)
+    ![Respond  with confirmation](assets/digress-name-faq.jpg)
 
-34. Back in the FAQ folder, allow digressions to come in and return in the `customize` settings
+36. Click on `Customize` button and enable `Allow digressions into this folder` and also `Return after digression`. Click `Apply` to save your changes.
 
-    ![Respond  with confirmation](assets/FAQ-digressions.jpg)
+    ![Respond  with confirmation](assets/digress-customize-faq.jpg)
 
-35. Here is the output of the Digressions section:
+37. Click on cross to go back to the `Build` page. Click on the three dots in the `FAQ` folder and select `Add node to folder`. 
+    ![Respond  with confirmation](assets/diregress-add-node.jpg)
 
-    ![Respond  with confirmation](assets/faq-digressions.gif)
+38. Name this node `FAQ Cuisine` and add the `#faq_cuisine_type` intent you just created in the `If bot recognizes`. If the user is asking about cuisine, add the following responses:
+    ```
+    We offer delicious Mexican, Chinese, Italian, Mediterranean,  and American cuisines.
+    Join us for Mexican, Italian, Mediterranean, American or Chinese.
+    What about some spicy Mexican, awesome Mediterranean, good old American, exotic Chinese or some Italian pasta.
+    ```
+
+    ![Respond  with confirmation](assets/digress-faq-cuisine-node.jpg)
+    
+39. Click on the cross button to go back to the `Build` page. Click on the three dots in the `FAQ` folder and select `Add node to folder`. 
+
+    ![Respond  with confirmation](assets/faq-add-hours-folder.jpg)
+
+40. Name this node `FAQ Hours` and add the `#faq_hours` intent in the `If bot recognizes`. If the is asking for hours or when the restaurant is open, respond with the following:
+
+    ```
+    We are open from 9am to 9pm daily.
+    ```
+
+    ![Respond  with confirmation](assets/digress-faq-hours-node.jpg)
+
+41. Click cross to go back to the `Build` page. Open the `Book reservation` node and click on `Customize`. Go to the `Digressions` tab and enable `Allow digressions away while slot filling`. Also enable `Only digress from slots to nodes that allow returns`. Click `Apply` to save your changes. Click cross to go back to the `Build` page.
+
+    ![Respond  with confirmation](assets/digress-customize-book-reservation.jpg)
+
+**Try it**
 
 ## Step 3: Test Watson Assistant Service
 
