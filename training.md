@@ -92,7 +92,7 @@ Sign up on [IBM Cloud](http://ibm.biz/slackchatbot070918). If you already have a
 
     ![Enable System Entities](assets/systementities.png)
 
-12. Click on the **Dialog** tab in the top menu bar. Click **Create**. There are two nodes added by default. The `welcome` condition is triggered when the chatbot is initially started. This is a good place to introduce the bot and suggest actions the user can ask of this chatbot. Enter `Hi, I'm HungerBot. You can ask to reserve a table.`
+12. Click on the **Dialog** tab in the top menu bar. Click **Create**. There are two nodes added by default. The `welcome` condition is triggered when the chatbot is initially started. This is a good place to introduce the bot and suggest actions the user can ask of this chatbot. Enter `Hi, I'm HungerBot. You can ask to reserve a table.` Click the `cross` icon to leave this screen and go back to the `dialog` page.
 
     ![Create dialog](assets/dialog.png)
 
