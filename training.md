@@ -63,7 +63,7 @@ Sign up on [IBM Cloud](http://ibm.biz/slackchatbot070918). If you already have a
 
     ![Add New Intent](assets/addnew.png)
 
-9.  Use the answers you wrote in Step 1 to create the first intent. If you did not go through that exercise, enter the following examples for the intent:
+9.  Name the intent `book_reservation` and use the answers you wrote in Step 1 to create the first intent. If you did not go through that exercise, enter the following examples for the intent:
 
     ```
     book a reservation
