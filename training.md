@@ -186,7 +186,7 @@ We can use handlers to give an exit route to the user.
     ![Respond  with confirmation](assets/cancel-handler-1.jpg)
 
 
-26. Click on the gear icon to open the detail pane. Since the user is cancelling their reservation, we need to clear out the context variables for this conversation.On the detail page, click on the three dots and then `Open context editor`. Set each one of our context variables (defined earlier as slots) to null.
+26. Click on the gear icon to open the detail pane. Since the user is cancelling their reservation, we need to clear out the context variables for this conversation. On the detail page, click on the three dots and then `Open context editor`. Set each one of our context variables (defined earlier as slots) to null.
 
     ```
         cuisine
@@ -194,6 +194,8 @@ We can use handlers to give an exit route to the user.
         time
         number
     ```
+
+    ![Respond  with confirmation](assets/cancel-handler-2-a.jpg)
 
 27. Additionally, add another context variable `user_cancelled` and set it to `true`. We will use this in the next step to respond accordingly for the whole node. Finally, set `And finally` to `skip to response`. The user has decided to abandon the intent, so we don't want to ask any more questions and just skip to the response.
 
