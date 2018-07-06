@@ -195,6 +195,7 @@ We can use handlers to give an exit route to the user.
         time
         number
     ```
+
 27. Additionally, add another context variable `user_cancelled` and set it to `true`. We will use this in the next step to respond accordingly for the whole node. Finally, set `And finally` to `skip to response`. The user has decided to abandon the intent, so we don't want to ask any more questions and just skip to the response.
 
     ![Respond  with confirmation](assets/cancel-handler-2.jpg)
