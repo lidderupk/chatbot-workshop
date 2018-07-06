@@ -211,7 +211,7 @@ We can use handlers to give an exit route to the user.
 
     ![Respond  with confirmation](assets/handler-enable-multiple-responses.jpg)
 
-31. Add a new response and then move it up before the existing response by using the up arrow. **The order is important here** as the flow will stop on the first condition that returns true. Use `$user_cancelled` in the first conditional response with the response of `Sorry to see you go. You are always welcome to start again.`
+31. Add a new response and then move it up before the existing response by using the up arrow. **The order is important here** as the flow will stop on the first condition that returns true. Use `$user_cancelled` in the first conditional response with the response of `Sorry to see you go. You are always welcome to start again.` Note that the lookahead search does not work here. You don't need to create a new context variable. Just enter `$user_cancelled`.
 
     ![Respond  with confirmation](assets/handler-add-user-cancelled.jpg)
 
